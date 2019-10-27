@@ -46,6 +46,8 @@ end
 function NOO.Scripte.Load()
     
     if SESSION.Gold.All == 0 then SESSION.Gold.All = GetMoney("player") end
+
+    --Noch ein GitHub Test--
     
     -- Initial Textfelder vom Monitor auf 0 setzen...
     NOOverview_MonitorFrame_AnzeigeGold:SetText( NOO.Scripte.GoldString( SESSION.Gold.All ) )
