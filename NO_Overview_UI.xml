@@ -1,0 +1,537 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+    <Script file="localization.lua"/>
+	<Script file="NO_Overview_Core.lua"/>
+
+<Frame name="NOOverview_MonitorFrame" frameStrata="DIALOG" toplevel="true" enableMouse="true" movable="true"  parent="UIParent"  hidden="false">
+	<Size>
+		<AbsDimension x="330" y="100" />
+	</Size>
+	<Anchors>
+		<Anchor point="CENTER" />
+	</Anchors>
+
+	<Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+		<EdgeSize val="16" />
+		<TileSize val="32" />
+		<BackgroundInsets left="5" right="5" top="5" bottom="5" />
+	</Backdrop>
+	<Frames>
+		<Button inherits="UIPanelButtonTemplate" text="Liste">
+			<Size x="80" y="20" />
+				<Anchors>
+					<Anchor point="BOTTOM" x="0" y="-8" />
+				</Anchors>
+			<Scripts>
+				<Onclick>
+					if NOOverview_MainFrame:IsVisible() then   
+            			NOOverview_MainFrame:Hide()
+        			else
+            			NOOverview_MainFrame:Show()
+        			end 
+				</Onclick>
+			</Scripts>
+		</Button>
+	</Frames>
+	<Layers>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_AnzeigeGold" font="Fonts\FRIZQT__.TTF" text="Gold" justifyH="RIGHT" justifyV="right">
+				<FontHeight val="12" />
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" x="15" y="-15" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_AnzeigeGoldGesamt" font="Fonts\FRIZQT__.TTF" text="Gold gesamt" justifyH="LEFT" justifyV="right">
+				<FontHeight val="10" />
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" x="15" y="-30" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_AnzeigeEP" font="Fonts\FRIZQT__.TTF" text="EP" justifyH="RIGHT" justifyV="right">
+				<FontHeight val="12" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="155" y="-15" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_AnzeigeEPGesamt" font="Fonts\FRIZQT__.TTF" text="EP gesamt" justifyH="RIGHT" justifyV="right">
+				<FontHeight val="10" />
+				<Anchors>
+					<Anchor point="TOPLEFT" x="155" y="-30" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_AnzeigeDauer" font="Fonts\FRIZQT__.TTF" text="Dauer" justifyH="CENTER" justifyV="right">
+				<FontHeight val="12" />
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" x="-15" y="-15" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_AnzeigeDauerGesamt" font="Fonts\FRIZQT__.TTF" text="Dauer gesamt" justifyH="CENTER" justifyV="right">
+				<FontHeight val="10" />
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" x="-15" y="-30" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_AnzeigeInstanceName" font="Fonts\FRIZQT__.TTF" text="Instance Name" justifyH="RIGHT" justifyV="right" hidden="true">
+				<Color r="0.5" g="0.7" b="0.9" a="1" />
+				<FontHeight val="12" />
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" x="15" y="-50" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parent_AnzeigeInstanceDauer" font="Fonts\FRIZQT__.TTF" text="Instance Dauer" justifyH="RIGHT" justifyV="right" hidden="true">
+				<Color r="0.5" g="0.7" b="0.9" a="1" />
+				<FontHeight val="12" />
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" x="-15" y="-50" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parentAnzeigeInstanceDifficulty" font="Fonts\FRIZQT__.TTF" text="Instance Difficulty" justifyH="RIGHT" justifyV="right" hidden="true">
+				<FontHeight val="10" />
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" x="15" y="-60" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parentAnzeigeInstanceGold" font="Fonts\FRIZQT__.TTF" text="Instance Gold" justifyH="RIGHT" justifyV="right" hidden="true">
+				<FontHeight val="10" />
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" x="15" y="-75" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+		<Layer level="OVERLAY">
+			<FontString name="$parentAnzeigeInstanceEP" font="Fonts\FRIZQT__.TTF" text="Instance EP" justifyH="RIGHT" justifyV="right" hidden="true">
+				<FontHeight val="10" />
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parent" x="-15" y="-75" />
+				</Anchors>
+				<Shadow>
+					<Offset x="1" y="1" />
+					<Color r="0" g="0" b="0" />
+				</Shadow>
+			</FontString>
+		</Layer>
+	</Layers>
+	<Scripts>   
+		<OnLoad>
+			self:RegisterForDrag("LeftButton")
+			self:RegisterEvent("ADDON_LOADED")
+			self:RegisterEvent("PLAYER_MONEY")			
+			self:RegisterEvent("PLAYER_ENTERING_WORLD");
+			self:RegisterEvent("PLAYER_XP_UPDATE");
+			self:RegisterEvent("PLAYER_LEVEL_UP");
+			self:RegisterEvent("PLAYER_LOGOUT");
+		</OnLoad>			
+		<OnEvent>
+			NOO.Scripte.Monitor.OnLoad(self, event, ...);
+		</OnEvent>
+		<OnEnter></OnEnter>
+		<OnDragStart>
+			self:StartMoving()
+		</OnDragStart>
+		<OnDragStop>
+			self:StopMovingOrSizing()
+		</OnDragStop>
+		<OnReceiveDrag></OnReceiveDrag> 
+		<OnLeave></OnLeave> 
+		<OnUpdate></OnUpdate> 		
+	</Scripts>        
+</Frame>
+
+ <Button name="NOOverview_ButtonTemplateMenu" motionScriptsWhileDisabled="true" virtual="true">
+	<Size x="174" y="54"/>
+		<Layers>
+		
+        	<Layer level="OVERLAY">
+				<Texture name="$parentIcon" file="Interface\Icons\Ability_ThunderClap" parentKey="icon">
+					<Size x="50" y="50"/>
+					<Anchors>
+						<Anchor point="LEFT" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentSelected" file="Interface\HelpFrame\HelpButtons" parentKey="selected" hidden="true">
+					<Size x="174" y="54"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+					<TexCoords left="0.00390625" right="0.68359375" top="0.66015625" bottom="0.87109375"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				local data = ButtonText[self:GetID()];
+				if data.icon  then
+					self.icon:SetTexture(data.icon);
+				end
+
+				if data.text then
+					self:SetText(data.text);
+				end
+
+				data.button = self;				
+			</OnLoad>
+			<OnEnter></OnEnter>
+			<OnLeave></OnLeave>
+			<OnMouseDown></OnMouseDown>
+			<OnMouseUp></OnMouseUp>
+			<OnClick>				
+				local data = ButtonText[self:GetID()];				
+				NOO.Scripte.MainFrame.SetFrameByKey(self:GetID());
+			</OnClick>
+		</Scripts>
+		<NormalTexture file="Interface\HelpFrame\HelpButtons">
+			<TexCoords left="0.00390625" right="0.68359375" top="0.44140625" bottom="0.65234375"/>
+		</NormalTexture>
+		<PushedTexture file="Interface\HelpFrame\HelpButtons">
+			<TexCoords left="0.00390625" right="0.68359375" top="0.22265625" bottom="0.43359375"/>
+		</PushedTexture>
+		<HighlightTexture file="Interface\HelpFrame\HelpButtons" alphaMode="ADD">
+			<TexCoords left="0.00390625" right="0.68359375" top="0.00390625" bottom="0.21484375"/>
+		</HighlightTexture>
+		<ButtonText name="$parentText" inherits="GameFontNormalMed2" justifyH="LEFT" parentKey="text">
+			<Size x="120" y="30"/>
+			<Anchors>
+				<Anchor point="LEFT" relativeTo="$parentIcon" relativePoint="RIGHT" x="0" y="-1"/>
+			</Anchors>
+		</ButtonText>
+	</Button>
+
+		<!-- ### MAIN SCREEN ###-->
+    <Frame name="NOOverview_MainFrame" toplevel="true" parent="UIParent" inherits="TranslucentFrameTemplate" hidden="true" enableMouse="true"  movable="true">
+		<Size x="974" y="524"/>
+		<Anchors>
+			<Anchor point="CENTER" x="0" y="0"/>
+		</Anchors>
+		<Layers>
+			<Layer level="BORDER" textureSubLevel="-6">
+				<Texture name="$parentTopTileStreaks" inherits="_UI-Frame-TopTileStreaks">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="13" y="-13"/>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT" x="-13" y="-35"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="$parentHeader" inherits="TranslucentFrameTemplate" parentKey="Header">
+				<Size x="230" y="45"/>
+				<Anchors>
+					<Anchor point="CENTER" relativePoint="TOP" x="0" y="-8"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString  name="$parentHeaderTitle" inherits="GameFontNormal" text="ON_Overview_TITLE" parentKey="HeaderTitle">
+							<Anchors>
+								<Anchor point="CENTER" x="0" y="0"/>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+						<Offset x="-7" y="-7"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			
+			<Frame name="$parentLeftInset" useParentLevel="true" inherits="InsetFrameTemplate" parentKey="leftInset">
+				<Anchors>
+					<Anchor point="TOPLEFT" x="10" y="-10" />
+					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMLEFT" x="207" y="10"/>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentLeftShadow" file="Interface\HelpFrame\Tileable-ParchmentEdge-Left" vertTile="true">
+							<Size x="64" y="256"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" x="0" y="0"/>
+								<Anchor point="BOTTOMLEFT" x="0" y="0"/>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentRightShadow" file="Interface\HelpFrame\Tileable-ParchmentEdge-Right" vertTile="true">
+							<Size x="64" y="256"/>
+							<Anchors>
+								<Anchor point="TOPRIGHT" x="0" y="0"/>
+								<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentTopShadow" file="Interface\HelpFrame\Tileable-ParchmentEdge-Top" horizTile="true">
+							<Size x="256" y="64"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" x="0" y="0"/>
+								<Anchor point="TOPRIGHT" x="0" y="0"/>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentBottomShadow" file="Interface\HelpFrame\Tileable-ParchmentEdge-Bottom" horizTile="true">
+							<Size x="256" y="64"/>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" x="0" y="0"/>
+								<Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="$parentMainInset" useParentLevel="true" inherits="InsetFrameTemplate" parentKey="mainInset">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentLeftInset" relativePoint="TOPRIGHT" x="3" y="-80" />
+					<Anchor point="BOTTOMRIGHT" x="-10" y="10"/>
+				</Anchors>
+			</Frame>			
+			
+			<Button name="$parentButton1" inherits="NOOverview_ButtonTemplateMenu" parentKey="button1" id="1">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentLeftInset" x="2" y="-20"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentButton2" inherits="NOOverview_ButtonTemplateMenu" parentKey="button2" id="2">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentButton1" relativePoint="BOTTOM" x="0" y="-12"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentButton3" inherits="NOOverview_ButtonTemplateMenu" parentKey="button3" id="3">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentButton2" relativePoint="BOTTOM" x="0" y="-12"/>
+				</Anchors>
+			</Button>
+			<Button name="$parentButton4" inherits="NOOverview_ButtonTemplateMenu" parentKey="button4" id="4">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentButton3" relativePoint="BOTTOM" x="0" y="-12"/>
+				</Anchors>
+			</Button> 
+			
+            <Frame name="$parentFrameStatistic" hidden="false" parentKey="stats">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentMainInset" x="5" y="-5"/>
+					<Anchor point="BOTTOMRIGHT" relativeTo="$parentMainInset" x="-5" y="5"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentTitle" inherits="GameFontNormalLarge" text="Session Statistiken" justifyH="LEFT">
+							<Size x="250" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="5" y="50"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						
+						<FontString name="$parentTitleHeute" inherits="GameFontNormal" text="Heute" justifyH="LEFT">
+							<Size x="710" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTitle" x="250" y="-20"/>
+							</Anchors>						
+						</FontString>
+						<FontString name="$parentTitleGesamt" inherits="GameFontNormal" text="Gesamt" justifyH="LEFT">
+							<Size x="710" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTitleHeute" x="250" y="0"/>
+							</Anchors>
+						</FontString>
+						
+						<FontString name="$parentText_GoldGesamt" inherits="GameFontNormal" text="Gold:" justifyH="LEFT">
+							<Size x="710" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTitle" x="0" y="-60"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentGoldHeute" inherits="GameFontNormal" text="GoldHeute" justifyH="Right" parentKey="GoldHeute">
+							<Size x="150" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_GoldGesamt" x="180" y="0"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentGoldGesamt" inherits="GameFontNormal" text="GoldGesamt" justifyH="Right" parentKey="GoldGesamt">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentGoldHeute" x="180" y="0"/>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentText_TimerGesamt" inherits="GameFontNormal" text="Spielzeit:" justifyH="LEFT">
+							<Size x="710" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_GoldGesamt" x="0" y="-20"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentTimerHeute" inherits="GameFontNormal" text="TimerHeute" justifyH="Right" parentKey="TimerHeute">
+							<Size x="150" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_TimerGesamt" x="180" y="0"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentTimerGesamt" inherits="GameFontNormal" text="TimerGesamt" justifyH="Right" parentKey="TimerGesamt">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTimerHeute" x="180" y="0"/>
+							</Anchors>
+						</FontString>
+
+						<FontString name="$parentText_Ausgaben" inherits="GameFontNormal" text="Ausgaben:" justifyH="LEFT">
+							<Size x="710" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_TimerGesamt" x="0" y="-20"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentAusgabenHeute" inherits="GameFontNormal" text="AusgabenHeute" justifyH="Right" parentKey="AusgabenHeute">
+							<Size x="150" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_Ausgaben" x="180" y="0"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentAusgabenGesamt" inherits="GameFontNormal" text="AusgabenGesamt" justifyH="Right" parentKey="AusgabenGesamt">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentAusgabenHeute" x="180" y="0"/>
+							</Anchors>
+						</FontString>	
+
+						<FontString name="$parentText_Ini" inherits="GameFontNormal" text="Gold (Ini):" justifyH="LEFT">
+							<Size x="710" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_Ausgaben" x="0" y="-20"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentIniGoldHeute" inherits="GameFontNormal" text="IniGoldHeute" justifyH="Right" parentKey="IniGoldHeute">
+							<Size x="150" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_Ini" x="180" y="0"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentIniGoldGesamt" inherits="GameFontNormal" text="IniGoldGesamt" justifyH="Right" parentKey="IniGoldGesamt">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentIniGoldHeute" x="180" y="0"/>
+							</Anchors>
+						</FontString>						
+
+						<FontString name="$parentText_Repair" inherits="GameFontNormal" text="Repair:" justifyH="LEFT">
+							<Size x="710" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_Ini" x="0" y="-20"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentRepairHeute" inherits="GameFontNormal" text="RepKostenHeute" justifyH="Right" parentKey="RepairHeute">
+							<Size x="150" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentText_Repair" x="180" y="0"/>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentRepairGesamt" inherits="GameFontNormal" text="RepKostenGesamt" justifyH="Right" parentKey="RepairGesamt">
+							<Size x="300" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentRepairHeute" x="180" y="0"/>
+							</Anchors>
+						</FontString>						
+                    </Layer>
+                </Layers>
+				<Scripts>
+					<OnShow></OnShow>
+					<OnLoad></OnLoad>
+				</Scripts>
+            </Frame>
+			<Frame name="$parentFrameSession" hidden="true" parentKey="session">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentMainInset" x="5" y="-5"/>
+					<Anchor point="BOTTOMRIGHT" relativeTo="$parentMainInset" x="-5" y="5"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentTitle" inherits="GameFontNormalLarge" text="Test Titel" justifyH="LEFT">
+							<Size x="250" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="15" y="-15"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentText1Header" inherits="GameFontNormal" text="TEST HEader" justifyH="LEFT">
+							<Size x="710" y="0"/>
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="$parentTitle" relativePoint="BOTTOMLEFT" x="0" y="-25"/>
+							</Anchors>
+						</FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+
+		</Frames>
+		<Scripts>
+			<OnLoad> 
+				self:RegisterForDrag("LeftButton")
+				NOO.Scripte.MainFrame.OnLoad(self)
+			</OnLoad>
+			<OnDragStart>
+				self:StartMoving()
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing()
+			</OnDragStop>
+		</Scripts>
+	</Frame>
+</Ui>

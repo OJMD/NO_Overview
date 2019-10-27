@@ -1,0 +1,9 @@
+## Interface: 11302
+## Title: |cff1e90ffNeo|r & |cff00CC00OJMD|r 's Overview
+## Notes: Session (Gold, ...), Twinks (Profession, Equip, ...), ... 
+## Author: Neo & OJMD
+## Version: 0.1 
+## SavedVariables: NOODB
+
+NO_Overview_UI.xml
+
