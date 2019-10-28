@@ -42,6 +42,8 @@ function NOO.Scripte.Init()
     
 end
 
+--TEST
+
 -- ### Addon Load Data
 function NOO.Scripte.Load()
     
